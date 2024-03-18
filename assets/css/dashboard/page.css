@@ -1,0 +1,214 @@
+.page_content{
+    background-color: white;
+    border-radius: var(--bRadius);
+
+    padding: 20px;
+}
+
+.page_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.documents_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 270px);
+    grid-template-rows: 450px;
+
+    row-gap: 15px;
+    column-gap: 10px;
+}
+
+.document--header{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    color: var(--color);
+    row-gap: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.document--header:hover span{
+    text-decoration: underline;
+}
+
+.document--header i{
+    font-size: 60px;
+}
+
+.document--sheets{
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    overflow: auto;
+    row-gap: 10px;
+    padding: 2px 2px;
+}
+
+.document--sheets::-webkit-scrollbar{
+    width: 7px;
+}
+
+.document--sheets::-webkit-scrollbar-thumb{
+    background-color: var(--text_color);
+    border-radius: 10px;
+}
+
+.document--sheet{
+    padding: calc(var(--pad) / 2);
+    background-color: white;
+    border-radius: var(--bRadius);
+    color: var(--text_color);
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.document--sheet:hover{
+    text-decoration: underline;
+}
+
+.documents_container--add{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+
+    background-color: var(--light_gray);
+    padding: var(--pad);
+    border-radius: var(--bRadius);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13), 0 1px 1px 0 rgba(0, 0, 0, .11);
+    cursor: pointer;
+    transform: scale(1);
+    transition: box-shadow .3s, transform .4s;
+}
+
+.documents_container--add span{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.documents_container--add_icon{
+    background-color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    border: 1px solid var(--gray);
+
+    transition: border .3s;
+}
+
+.documents_container--add_icon i {
+    font-size: 40px;
+    transition: color .3s;
+}
+
+.documents_container--add:hover{
+    box-shadow: 0 26px 58px 0 rgba(0, 0, 0, .22), 0 5px 14px 0 rgba(0, 0, 0, .18);
+}
+
+.documents_container--add:hover > *{
+    transform: scale(1.02);
+}
+
+.documents_container--add:hover .documents_container--add_icon{
+    border: 1px solid var(--orange);
+
+    > i{
+        color: var(--orange);
+    }
+}
+
+/* new styles */
+.document_container{
+    width: 270px;
+    height: 450px;
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius);
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    
+    transition: box-shadow .2s;
+  }
+
+  .document_container:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  .document_container--header{
+    display: grid;
+    grid-template-columns: 50px 150px 40px;
+    column-gap: 10px;
+    align-items: center;
+  }
+
+  .document_container--header > input{
+    outline: none;
+    border: 0px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+  }
+
+  .document_container--header > input.disabled:hover{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+  }
+
+  .document_container--header > input.disabled{
+    background-color: white;
+    color: black;
+    border: none;
+  }
+  
+  .document_container--sheet{
+    display: grid;
+    grid-template-columns: 40px 1fr 50px;
+    column-gap: 5px;
+    align-items: center;
+  }
+
+  .document_container--sheet > span{
+    font-weight: 500;
+  }
+
+  .document_container--footer{
+    display: flex;
+    column-gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .document_err{
+    animation: err_anim .4s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes err_anim{
+    from{
+        box-shadow: 0 26px 58px 0 rgba(255, 0, 0, .22), 0 5px 14px 0 rgba(255, 0, 0, .18);
+    }
+    to{
+        box-shadow: 0 0 4px 2px rgba(255, 0, 0, .22), 0 0 14px 0 rgba(255, 0, 0, .18);
+    }
+  }
+
+  #add{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }

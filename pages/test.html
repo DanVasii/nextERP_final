@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <link rel = 'stylesheet' href="/assets/css/main.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+        <link rel = 'stylesheet' href="/assets/fontawesome-pro-6.3.0-web (2)/fontawesome-pro-6.3.0-web/css/all.css">
+        <link rel = 'stylesheet' href="/assets/fontawesome-pro-6.3.0-web (2)/fontawesome-pro-6.3.0-web/css/fontawesome.css">
+        <link rel = 'stylesheet' href="/assets/css/dashboard/index.css">
+        <link rel = 'stylesheet' href="/assets/css/dashboard/dashboard.css">
+
+        <link rel = 'stylesheet' href="/assets/css/modal_panel.css">
+
+      <script src="/assets/js/column_selector.js"></script>
+        <link rel = 'stylesheet' href = '/assets/css/data_info.css'>
+
+        <script src = '/assets/js/modal_panel.js'></script>
+        <script src = '/assets/js/DynamicNodes.js'></script>
+
+        <link rel = 'stylesheet' href="/assets/css/custom_select.css">
+        <script src = '/assets/js/custom_select.js'></script>
+        
+        <style>
+            body{
+                padding: 20px;
+            }
+
+            .document_container{
+              width: 270px;
+              height: 450px;
+              padding: calc(var(--pad) / 2);
+              border-radius: var(--bRadius);
+
+              display: grid;
+              grid-template-rows: auto 1fr auto;
+              row-gap: 15px;
+              box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+              
+              transition: box-shadow .2s;
+            }
+
+            .document_container:hover{
+              box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            }
+
+            .document_container--header{
+              display: grid;
+              grid-template-columns: 50px 150px 40px;
+              column-gap: 10px;
+              align-items: center;
+            }
+
+            .document_container--header > input{
+              outline: none;
+              border: 0px;
+              font-size: 18px;
+              font-weight: bold;
+              border-bottom: 2px solid black;
+            }
+
+            .document_container--header > input:disabled{
+              background-color: white;
+              color: black;
+              border: none;
+            }
+            
+            .document_container--sheet{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+            }
+
+            .document_container--sheet > span{
+              font-weight: 500;
+            }
+
+            .document_container--footer{
+              display: flex;
+              column-gap: 10px;
+              justify-content: flex-end;
+            }
+
+        </style>
+    </head>
+    <body>
+
+      <div class="document_container">
+
+        <div class="document_container--header">
+          <img src = '/assets/images/folder_11648544.png' width="50px"/>
+
+          <input value="Aici va fi numele" disabled/>
+          
+          <button class="normal_button">
+            <img src = '/assets/images/pen_11801156.png' width="30px"/>  
+          </button>
+        </div>
+
+        <div class="document_container--body">
+          <div class="document_container--sheet">
+            <img src = '/assets/images/spreadsheet_7152735.png' width="40px" />
+              <span>Nume sheet</span>
+              <button class="normal_button">
+                <img src = '/assets/images/favorite_9166831.png' width="30px" />
+              </button>
+          </div>
+        </div>
+
+        <div class="document_container--footer">
+          <button class="normal_button">
+            <img src = '/assets/images/favorite_9166831.png' width="30px" />
+          </button>
+          <button class="normal_button">
+            <img src = '/assets/images/trash_3926316.png' width="30px" />
+          </button>
+        </div>
+
+        </div>
+      </div>
+
+        <script>
+            function rotate(){
+                let elem = document.querySelector(".document_cube");
+
+                elem.style.transform = "rotateY(-90deg)";
+
+            }
+        </script>
+    </body>
+</html>

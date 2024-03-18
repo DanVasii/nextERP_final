@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        
+        <!-- Icons -->
+        <link rel = 'stylesheet' href="/assets/fontawesome-pro-6.3.0-web (2)/fontawesome-pro-6.3.0-web/css/all.css">
+        <link rel = 'stylesheet' href="/assets/fontawesome-pro-6.3.0-web (2)/fontawesome-pro-6.3.0-web/css/fontawesome.css">
+
+        <!-- Custom css -->
+        <link rel = 'stylesheet' href="/assets/css/modal_panel.css">
+
+        <link rel = 'stylesheet' href="/assets/css/main.css">
+        <link rel = 'stylesheet' href="/assets/css//dashboard/dashboard.css">
+        <link rel="stylesheet" href="/assets/css/dashboard/page.css">
+        <link rel = 'stylesheet' href="/assets/css/custom_select.css">
+        <link rel  = 'stylesheet' href="/assets/css/confirm.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+                <!-- Libs  -->
+                <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+                integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+                integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        <!-- Custom js  -->
+        <script src = '/assets/js/modal_panel.js'></script>
+        <script src="/assets/js/page.js"></script>
+        <script src="/assets/js/dashboard_menu.js"></script>
+        <script src = '/assets/js/view_selector.js'></script>
+        <script src = '/assets/js/DynamicNodes.js'></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/customParseFormat.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+        <script src = '/assets/js/confirm.js'></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script src="/assets/js/column_selector.js"></script>
+
+    </head>
+    <body>
+        <input type = 'hidden' id = 'page_id' value='{{pageId}}'/>
+        <div class="body--wrapper">
+            <div class="bubble one small"></div>
+        </div>
+        
+        <div class="topbar">
+            <div class="left_side">
+                <div class="logo_container">
+                    <img src = '/assets/images/logo_116.jpg' height="50px" alt="Logo" /> 
+                </div>
+                <div class="farm_selector">
+                    
+                    <div class="farm_selector--header">
+                        <div class="title">My companies</div>
+                        <span>Nume companie</span>
+                        <i class="fa-regular fa-chevron-down"></i>
+                    </div>
+
+                    <div class="farm_selector--container">
+                        <div class="farm_selector--farms">
+
+                            
+                            <a class="action_link warning small center" onclick="add_company()"> <i class="fa-solid fa-plus"></i> Add company</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="search_bar not_active" onclick="main()">
+                <input type = 'text' placeholder="Search"/>
+                <div class="cover">
+                    <i class="fa-solid fa-search"></i>
+                    <span>nexpert</span>
+                </div>
+            </div>
+
+            <div class="logged_user--container" tabindex="2" onfocus="focus_user()" onblur="blur_user()">
+                <img src = '/assets/images/user_6172270.png' />
+
+                <div class="logged_user--info_container">
+                    <div class="logged_user--info">
+                        <span>Logged in as {{userRole}}</span>
+                        <a href = ''><i class="fa-solid fa-gear"></i> Manage account</a>
+                        <a href = ''><i class="fa-solid fa-gear"></i> Manage account</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <div class="content_container">
+        <div class="menu">
+            <div class="menu_button" onclick="open_menu()">
+                <i class="fa-regular fa-chevrons-left"></i>
+            </div>
+            
+            <div class="menu_container">
+    
+
+            <input type = 'hidden' id = 'page_name' value = '{{pageName}}'/>
+            <input type = 'hidden' id = 'doc_id' value = '{{doc_id}}' />
+            
+            <b>Pages</b>
+            <a class="menu_page--link" href = '/home'>
+                <span class="icon_holder">
+                    <img src="/assets/images/analytics_12965298.png" height="40px"/>
+                </span>
+                Acasa
+            </a>
+            <a class="menu_page--link" href = '/home'>
+                <span class="icon_holder">
+                    <img src="/assets/images/notification_10008720.png" height="40px"/>
+                </span>
+                Alerts
+            </a>
+
+            <a class="menu_page--link" href = '/home'>
+                <span class="icon_holder">
+                    <img src="/assets/images/settings.png" height="40px"/>
+                </span>
+                Settings
+            </a>
+
+            <a class="menu_page--link" href = '/reporting'>
+                <span class="icon_holder">
+                    <img src="/assets/images/HeroRight.png" height="40px"/>
+                </span>
+                Reporting
+            </a>
+            {{#favourites}}
+            <div class="menu_page--dynamic" data-id = {{_id}}>
+
+                <span class="icon_holder">
+                    {{#sheetName}}
+                        <img src = '/assets/images/spreadsheet_7152735.png' width="30px" />
+                    {{/sheetName}}
+                    {{^sheetName}}
+                    <img src = '/assets/images/folder_11648544.png' width="30px" />
+                {{/sheetName}}
+                </span>
+
+                <div class = "menu_page--name">
+                    {{#sheetName}}
+                    <a href="/document/{{pageName}}/{{documentName}}?sheet={{sheetName}}" class="page_link">
+                        {{sheetName}}
+                    </a>
+                    {{/sheetName}}
+                    {{^sheetName}}
+                    <a href="/document/{{pageName}}/{{documentName}}" class="page_link">
+                        {{documentName}}
+                    </a>
+                    {{/sheetName}}
+                  
+                </div> 
+            </div>
+            {{/favourites}}
+            
+            <b>Documents</b>
+            {{#pages}}
+
+            <div class="menu_page--dynamic" data-id = {{_id}}>
+
+                <span class="icon_holder">
+                    <i class='{{icon}}'></i>
+                </span>
+
+                <div class = "menu_page--name">
+                    <a href="/document/{{pageName}}" class="page_link">{{pageName}}</a>
+                </div> 
+            </div>
+
+            {{/pages}}
+
+            <div class="add_page--container">
+                <div class="add_page--form">
+                    <label class="page_icon">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        <input type = 'radio' name="page_icon" value="fa-solid fa-dollar-sign"/>
+                    </label>
+
+                    <label class="page_icon">
+                        <i class="fa-solid fa-gear"></i>
+                        <input type = 'radio' name="page_icon" value="fa-solid fa-gear" checked/>
+                    </label>
+
+                    <label class="page_icon">
+                        <i class="fa-solid fa-microchip-ai"></i>
+                        <input type = 'radio' name="page_icon" value="fa-solid fa-microchip-ai"/>
+                    </label>
+
+                    <label class="page_icon">
+                        <i class="fa-solid fa-truck"></i>
+                        <input type = 'radio' name="page_icon" value="fa-solid fa-truck"/>
+                    </label>
+
+                    <label style="margin-top: 10px;">
+                        Name
+                        <input class="input_one" placeholder="Page name" value="New page" id="page_name_add">
+                    </label>
+
+                    <button class="submit_button maxW small" onclick="add_page()" style="margin-top: 10px;"><i class="fa-regular fa-check"></i> Submit</button>
+                </div>
+            </div>
+
+            <button class="primary_button maxW small" onclick="toggle_add_page()" ><i class="fa-solid fa-plus"></i> Create new page</button>
+        </div>
+        </div>
+
+        <div class="page_content">
+            <div class="page_header">
+                <h2>Documents for page {{pageName}}</h2>
+                <div class="button_menu--container">
+                    <button class="primary_button"><i class="fa-solid fa-gear"></i> Page settings</button>
+                    <div class="button_menu--data_wrapper">
+                        <div class="button_menu--data_container">
+                            <a class="action_link danger" onclick="remove_page(event)">
+                                <i class="fa-solid fa-trash"></i>
+                                Remove 
+                            </a>
+                            <a class="action_link primary" onclick="rename_page(event)">
+                                <i class="fa-solid fa-pen"></i>
+                                Rename 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            
+            <div class="documents_container">
+                <button class="normal_button" id = 'add' onclick="add_document()">
+                    <img src = '/assets/images/plus_12800787.png' width="50px" />
+                </button>
+            </div>
+
+       </div>
+       </div>
+
+    <template id = 'sheetMenu'>
+        <div class="menu_group--item">
+
+            <a class="menu_header" >
+                <i class="fa-solid fa-folder-open" ></i>
+                <span>
+                    
+                </span>
+                <button class="icon_button" onclick="toggle_actions(this, event)"><i class="fa-regular fa-gears"></i></button>
+            </a>
+
+            <div class="actions_container">
+                <div class="actions_list">
+                    <div class="action danger">
+                        <i class="fa-regular fa-trash"></i> Delete
+                    </div>
+                    <div class="action primary">
+                        <i class="fa-regular fa-edit"></i> Rename
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id = 'page_container'>
+        <div class="menu_page--dynamic">
+
+         <span class="icon_holder">
+             <i></i>
+         </span>
+
+         <div class = "menu_page--name">
+             <a href class="page_link"></a>
+         </div> 
+ </div>
+</template>
+
+
+
+<template id = 'document'>
+    <div class="document_container">
+
+        <div class="document_container--header">
+          <img src = '/assets/images/folder_11648544.png' width="50px"/>
+    
+          <input value="" class="disabled"/>
+          
+          <button class="normal_button" data-for="document_edit">
+            <img src = '/assets/images/pen_11801156.png' width="30px"/>  
+            <img src = '/assets/images/check_9248018.png' width="30px" style="display: none;"/>  
+          </button>
+        </div>
+    
+        <div class="document_container--body">
+    
+            
+        </div>
+    
+        <div class="document_container--footer">
+          <button class="normal_button" data-for="favourite">
+            <img src = '/assets/images/favorite_9166831.png' width="30px" />
+          </button>
+          <button class="normal_button" data-for="delete">
+            <img src = '/assets/images/trash_3926316.png' width="30px" />
+          </button>
+        </div>
+    
+        </div>
+</template>
+
+<template id = 'document_sheet'>
+    <div class="document_container--sheet">
+        <img src = '/assets/images/spreadsheet_7152735.png' width="40px" />
+          <span></span>
+          <button class="normal_button">
+            <img src = '/assets/images/favorite_9166831.png' width="30px" />
+          </button>
+      </div>
+</template>
+
+        <script>
+            function main()
+            {
+                let search_bar = document.querySelector(".search_bar");
+
+                if (search_bar.classList.contains("not_active"))
+                {
+                    search_bar.classList.remove("not_active");
+                    search_bar.classList.add("active");
+
+                    search_bar.querySelector("input").focus();
+                }
+                else{
+                    search_bar.classList.remove("active");
+                    search_bar.classList.add("not_active");
+                }
+            }
+
+            function open_menu()
+            {
+                let content_container = document.querySelector(".content_container");
+
+                content_container.classList.toggle("menu_on");
+            }
+        </script>
+    </body>
+</html>

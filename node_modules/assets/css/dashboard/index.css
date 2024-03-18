@@ -1,0 +1,1370 @@
+.content_container{
+    min-height: auto;
+    height: calc(100vh - 70px);
+}
+
+.page_content 
+{
+    background-color: white;
+    padding: var(--pad);
+    width: 100%;
+    border-radius: var(--bRadius);
+    height: calc(100vh - 70px);
+}
+
+.menu{
+    height: calc(100vh - 70px);
+}
+
+.excel_hasTitle{
+    margin-top: 40px !important;
+    position: relative !important;
+}
+
+.excel_header--menu{
+    margin-top: 30px;
+    background-color: var(--light_gray);
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.excel_header--menu_container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding: 2px calc(var(--pad) / 2) 0px calc(var(--pad) / 2);
+}
+
+.excel_header--menu_item{
+    border-radius: var(--bRadius) var(--bRadius) 0px 0px;
+    padding: var(--pad);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color .2s;
+}
+
+.excel_header--menu_item:hover{
+    background-color: var(--light_orange);
+}
+
+.excel_header--menu_item.active{
+    background-color: var(--orange);
+}
+
+.excel_header{
+    /* TODO delete display none */
+    display: none;
+    background-color: var(--light_gray);
+    padding: var(--pad);
+    border-radius: 0px 0px var(--bRadius) var(--bRadius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    position: relative;
+    height: 180px;
+}
+
+.excel_header--page{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: calc(100% - 60px);
+    width: calc(100% - 20px);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity .3s;
+}
+
+.excel_header--page.active{
+    opacity: 1;
+    z-index: 9999;
+}
+
+.excel_header--page.multiple_tabs{
+    display: flex;
+    column-gap: 15px;
+}
+
+.excel_formula--container{
+    position: relative;
+    margin-top: 5px;
+    background-color: white;
+    padding: 2px;
+    border-radius: 7px;
+    border: 2px solid var(--orange);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
+.excel_formula--container.active .excel_formula--list{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .4s 0s, visibility 0s 0s;
+}
+
+.excel_functions{
+    height: 100%;
+    border-radius: var(--bRadius);
+    background-color: var(--light_orange);
+
+    transition: background-color .3s;
+}
+
+.excel_functions:hover{
+    background-color: var(--orange);
+}
+
+.excel_hasTitle::before{
+    content: attr(data-title);
+    position: absolute;
+    top: -30px;
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius) var(--bRadius) 0px 0px;
+    background-color: var(--orange);
+    color: white;
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+.excel_header--group{
+    background-color: white;
+    padding: var(--pad);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+}
+
+.excel_header--group:hover{
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, .13), 0 1px 2px 0 rgba(0, 0, 0, .11);
+}
+
+.excel_header--group.vertical{
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
+    column-gap: 5px;
+    flex-wrap: wrap;
+}
+
+.font_group{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.font_group .excel_group--row:nth-child(1){
+    display: grid;
+    grid-template-columns: 200px auto auto auto;
+    column-gap: 10px;
+}
+
+.font_group .excel_group--row:nth-child(2){
+    display: grid;
+    grid-template-columns: 30px 30px 30px 30px 30px 30px;
+    column-gap: 10px;
+}
+
+.content_type{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.content_type .excel_group--row.hidden{
+    height: 0px;
+    display: none;
+    overflow: hidden;
+}
+
+.content_type .excel_group--row:nth-child(2)
+{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}
+
+.excel_group--row.detail{
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    border-top: 1px solid var(--orange);
+    padding-top: 5px;
+
+    color: var(--orange);
+}
+
+/* Body */
+
+.excel_table{
+    width: 100%;
+    
+    overflow: auto;
+    padding: 15px 0px 10px 70px;
+
+    position: relative;
+}
+
+.excel_table--header{
+    background-color: var(--light_gray);
+    margin-top: 15px;
+    border-radius: var(--bRadius) var(--bRadius) 0px 0px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    padding-right: 20px;
+
+    width: fit-content;
+}
+
+.excel_table--header_drag{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width: 10px;
+    background-color: transparent;
+
+    cursor: col-resize;
+}
+
+.excel_table--header_items
+{
+    --numCols: 3;
+    display: grid;
+    column-gap: 1px;
+    grid-template-columns: repeat(var(--numCols), max-content);
+}
+
+.excel_table--header_actions
+{
+    position: absolute;
+    top: 0px;
+    opacity: 0;
+    background-color: white;
+    transform: translateY(0%);
+
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+    left: -2px;
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+    transition: all .4s;
+}
+
+.excel_table--header_actions button:hover i{
+    color: var(--orange);
+}
+
+.excel_table--header_elem:hover > .excel_table--header_actions
+{
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.excel_table--header_elem.selected > .excel_table--header_actions{
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.excel_table--header_elem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid var(--orange);
+    column-gap: 5px;
+    padding: var(--pad) 5px;
+    position: relative;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.excel_table--header_elem i{
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.excel_table--header_elem .custom_select{
+    width: 100%;
+    font-size: 14px;
+}
+
+.excel_table--header_elem .custom_select--header{
+    background-color: var(--light_green);
+}
+
+.excel_table--header_elem .custom_select--options_container{
+    background-color: var(--light_green);
+}
+.excel_table--header .custom_select--option{
+    background-color: var(--light_gray);
+}
+
+.excel_table--col_plus{
+    width: 130px;
+    height: 30px;
+    border-radius: var(--bRadius);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--light_orange);
+
+    padding: 0px 5px;
+    display: flex;
+    column-gap: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    position: relative;
+    transition: all .4s;
+}
+
+.excel_table--col_plus:hover{
+    background-color: var(--orange);
+    color: white;
+}
+
+.excel_table--body
+{
+    background-color: white;
+    margin-top: 1px;
+    border: 1px solid var(--light_gray);
+    background-color: var(--gray    );
+    width: fit-content;
+    padding: 1px;
+    position: relative;
+}
+
+.excel_table--body_row
+{
+    display: grid;
+    column-gap: 1px;
+    background-color: var(--gray);
+    grid-template-columns: 181px max-content;
+    position: relative;
+    margin-bottom: 1px;
+}
+
+.excel_table--body_row_data{
+    position: absolute;
+    top: 0px;
+    left: -50px;
+    width: 50px;
+    height: 100%;
+    background-color: var(--light_orange);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.excel_table--body_row:hover .excel_table--body_row_data{
+    background-color: var(--orange);
+}
+
+.excel_table--body_row .excel_table--body_row_data::before{
+    content: "\f14a";
+    font-family: 'Font Awesome 6 Pro';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: calc((100% - 20px) / 2);
+    font-size: 20px;
+    opacity: 0;
+    left: 0px;
+    color: var(--gray);
+
+    transition: all .4s;
+}
+
+.excel_table--body_row:not(.selected):hover .excel_table--body_row_data::before{
+    opacity: .5;
+    left: -20px;
+}
+
+.excel_table--body_row.selected .excel_table--body_row_data::before{
+    left: -20px;
+    opacity: 1;
+    color: green;
+}
+
+.excel_table--body_cell{
+    padding: 4px;
+    position: relative;    
+    outline: none;
+    background-color: white;
+    font-size: 12px;
+    font-family: Arial;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.excel_table--body_cell.active::before{
+    content: "";
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+    border: 2px solid var(--orange);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 9999;
+}
+
+.cell_selector{
+    width: 0px;
+    height: 0px;
+    border: 2px solid var(--orange);
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.excel_add_row{
+    display: flex;
+    justify-content: center;
+    padding: var(--pad) 0px;
+}
+
+.excel_table--add_col_menu{
+    position: absolute;
+
+    font-size: 14px;
+    border: 1px solid var(--gray);
+    top: calc(100% + 10px);
+
+    border-radius: var(--bRadius);
+    padding: 15px calc(var(--pad) / 2) calc(var(--pad) / 2) calc(var(--pad) / 2);
+    width: 300px;
+    left: 0px;
+    background-color: white;
+    color: black !important;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: visibility 0s .4s, opacity .4s 0s;
+}
+
+.excel_table--add_col_menu.open
+{
+    visibility: visible;
+    opacity: 1;
+
+    transition: visibility 0s, opacity .4s .2s;
+}
+
+/* Sheets */
+
+.excel_sheets--container
+{
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+    
+    background-color: var(--light_orange);
+    border-radius: var(--bRadius);
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    position: fixed;
+    left: 0px;
+    z-index: 99999;
+
+    transition: all .3s;
+}
+
+.excel_sheets--container .fa-plus{
+    background-color: rgba(255, 255, 255, .5);
+    padding: var(--pad);
+    margin-right: 5px;
+    border-radius: var(--bRadius);
+    cursor: pointer;
+
+    transition: background-color .2s;
+}
+
+.excel_sheets--container .fa-plus:hover{
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.excel_sheets::-webkit-scrollbar {
+    height: 7px;
+}
+
+.excel_sheets::-webkit-scrollbar-track {
+    background: var(--light_orange);
+}
+
+.excel_sheets::-webkit-scrollbar-thumb {
+    background-color: var(--blue);
+    border-radius: 18px;
+    border: 1px none #ffffff;
+}
+
+.excel_sheets{
+    padding: calc(var(--pad) / 2) var(--pad);
+    display: flex;
+    overflow: auto;
+}
+
+.excel_sheet{
+    border-radius: 5px 20px 5px 5px;
+    padding: 5px 20px;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+
+    text-wrap: nowrap;
+}
+
+.excel_sheet:hover{
+    background-color: var(--yellow);
+}
+
+.excel_sheet i{
+    padding: 3px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.excel_sheet i:hover{
+    background: radial-gradient(circle at center, white, transparent);
+}
+
+.excel_sheet.active{
+    background-color: var(--orange);
+}
+
+.excel_sheets--menu{
+    background-color: white;
+    z-index: 9999;
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+    position: absolute;
+    width: 220px;
+    right: 35px;
+    top: 0px;
+    border: 2px solid var(--light_gray);
+
+    opacity: 0;
+    visibility: hidden;
+    border-radius: var(--bRadius);
+    
+
+    transition: visibility 0s .4s, opacity .4s 0s;
+}
+
+.excel_sheets--menu.active{
+    visibility: visible;
+    opacity: 1;
+
+    transition: visibility 0s 0s, opacity .4s 0s;
+}
+
+.excel_sheets--menu #add_sheet{
+    margin-top: 10px;
+}
+
+.excel--context_menu{
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, .13), 0 1px 4px 0 rgba(0, 0, 0, .11);
+    border-radius: var(--bRadius);
+    border: 1px solid var(--gray);
+    width: 100%;
+    min-width: 120px;
+    bottom: 20%;
+    overflow: hidden;
+    z-index: 9999;
+    
+    opacity: 0;
+    visibility: hidden;
+
+    transition: bottom .4s, opacity .4s, visibility 0s .4s;
+}
+
+.excel--context_menu.open{
+    bottom: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition: bottom .4s, opacity .4s, visibility 0s 0s;
+}
+
+.excel--context_item{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding: calc(var(--pad) / 2);
+    cursor: pointer;
+}
+
+.excel--context_item.danger{
+    color: var(--red);
+}
+
+.excel--context_item.normal{
+    color: var(--blue);
+}
+
+.excel--context_item:hover{
+    background-color: var(--light_gray);
+}
+
+.excel--context_item:not(:last-child){
+    border-bottom: 1px solid var(--gray);
+}
+
+
+/* Types */
+.excel_table--body_cell.type_date date_value
+{
+    display: block;
+    width: 80%;
+
+}
+
+.excel_table--body_cell.type_date::after{
+    content: "\f133";
+    font-family: 'Font Awesome 6 Pro';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 100%;
+    font-size: 15px;
+    background-color: var(--light_orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: initial;
+}
+
+.excel_table--body_cell.type_options option_value{
+    display: block;
+    width: 80%;
+}
+
+.excel_table--body_cell.type_options::after{
+    content: "\f078";
+    font-family: 'Font Awesome 6 Pro';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 100%;
+    font-size: 15px;
+    background-color: var(--light_orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: initial;
+
+}
+
+.type_options--container{
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    top: calc(100% + 5px);
+    left: 0px;
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .3s;
+}
+
+.type_options--container .type_options--list{
+    overflow: hidden;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.type_options.active .type_options--container .type_options--list:empty::after{
+    content: "No options";
+    width: 100%;
+    font-weight: bold;
+}
+
+.type_options.active .type_options--list{
+    padding: calc(var(--pad) / 2);
+}
+
+.type_options.active .type_options--container
+{
+    grid-template-rows: 1fr;
+}
+
+.type_options--option{
+    padding: calc(var(--pad) / 2);
+    border: 1px solid var(--light_gray);
+    border-radius: var(--bRadius);
+    cursor: pointer;
+}
+
+.type_options--option:hover{
+    background-color: var(--light_gray);
+}
+
+.type_options--option.active{
+    background-color: var(--light_orange);
+}
+
+.excel_table--body_cell.type_check check_value{
+    display: block;
+    width: 80%;
+}
+
+.excel_table--body_cell.type_check::after{
+    content: "\f14a";
+    font-family: 'Font Awesome 6 Pro';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 100%;
+    font-size: 15px;
+    color: var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.excel_table--body_cell.type_check.checked::after{
+    content: "\f14a";
+    font-family: 'Font Awesome 6 Pro';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 100%;
+    font-size: 15px;
+    color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hyperlink_methods{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2px;
+    background-color: var(--gray);
+}
+
+.options_editor{
+    max-width: 400px;
+    background-color: var(--light_gray);
+    padding: var(--pad);
+    border-radius: var(--bRadius);
+}
+
+.options_editor--list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.options_editor--option {
+    background-color: white;
+    border-radius: var(--bRadius);
+    padding: calc(var(--pad) / 2);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+
+    display: flex;
+    align-items: flex-end;
+    column-gap: 10px;
+    justify-content: space-between;
+}
+
+.file_upload--container
+{
+    padding-bottom: 50px !important;
+}
+
+.file_label{
+    padding: var(--pad);
+    background-color: var(--orange);
+    border-radius: var(--bRadius);
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+    max-width: 500px;
+
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.file_label.loading{
+    pointer-events: none;    
+    animation-name: file_label_loading;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+}
+
+@keyframes file_label_loading{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: .2;
+    }
+}
+
+.file_label.loading::after{
+    content: "Loading...";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--orange);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file_label input{
+    width: 0px;
+    visibility: hidden;
+}
+
+.file_import--document_container{
+    background-color: var(--light_gray);
+    margin-top: 10px;
+    border-radius: var(--bRadius);
+    padding: var(--pad);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+}
+
+.file_import--document_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file_import--sheets_container{
+    background-color: white;
+    padding: calc(var(--pad) / 2);
+    margin-top: 10px;
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+    overflow: auto;
+}
+
+.file_import--sheets_container::-webkit-scrollbar{
+    height: 6px;
+}
+
+.file_import--sheets_container::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 10px;
+}
+
+.file_import--sheets_list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: max-content;
+    column-gap: 5px;
+    margin-top: 5px;
+}
+
+.file_import--sheet{
+    padding: calc(var(--pad) / 2);
+    background-color: var(--light_gray);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.file_import--sheet:hover{
+    background-color: var(--light_orange);
+}
+
+.file_import--sheet.active{
+    background-color: var(--orange);
+}
+
+.file_import--sheet_info{
+    margin-top: 10px;
+}
+
+.file_import--column_tray{
+    background-color: white;
+    padding: var(--pad);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    overflow: auto;
+}
+
+.file_import--column_tray::-webkit-scrollbar{
+    height: 6px;
+}
+
+.file_import--column_tray::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 10px;
+}
+  
+.file_import--column_list{
+display: flex;
+flex-direction: column;
+row-gap: 10px;
+}
+
+.file_import--column{
+display: flex;
+flex-direction: column;
+row-gap: 5px;
+}
+
+.file_import--column.err .file_import--column_err{
+display: block
+}
+
+.file_import--column_body{
+background-color: var(--light_gray);
+padding: calc(var(--pad) / 2);
+border-radius: var(--bRadius);
+box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+
+display: grid;
+grid-template-columns: auto 1fr;
+grid-template-rows: auto auto;
+column-gap: 10px;
+}
+
+.file_import--column_options{
+margin-top: 10px;
+}
+
+.file_import--column.err::after{
+content: attr(err);
+position: absolute;
+width: calc(100% - 10px);
+height: auto;
+padding: calc(var(--pad) / 2);
+background-color: var(--light_red);
+left: 0px;
+bottom: calc(100% + 5px);
+font-weight: bold;
+border-radius: var(--bRadius);
+}
+
+.file_import--column_err{
+background-color: var(--light_red);
+border-radius: var(--bRadius);
+display: none;
+width: 100%;
+padding: calc(var(--pad) / 2);
+color: white;
+font-weight: bold;
+}
+
+.file_import--column_optionBody{
+background-color: white;
+padding: var(--pad);
+border-radius: var(--bRadius);
+grid-row: 1/-1;
+grid-column: 2;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.file_import--sheet_data_container{
+    overflow: hidden;
+}
+
+.file_import--sheet_data_tray{
+    white-space: nowrap;
+}
+
+.file_import--sheet_data_element{
+    display: inline-block;
+    width: 100%;
+}
+
+.import_verification--document{
+    background-color: var(--light_gray);
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12);
+}
+
+.import_verification--document > span{
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.import_verification--sheet{
+    background-color: white;
+    padding: var(--pad);
+    border-radius: var(--bRadius);
+    margin-top: 10px;
+    border: 1px solid var(--gray);
+}
+
+.import_verification--sheet > span{
+    font-weight: bold;
+}
+
+.import_verification--sheet_info{
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.import_verification--sheet_column{
+    background-color: var(--light_gray);
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    overflow: hidden;
+}
+
+.import_verification--sheet_column > span{
+    padding: 0px 5px;
+}
+
+.import_verification--sheet_column > span:nth-of-type(2){
+    padding: 0px 0px 0px 30px;
+    margin-left: -15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+
+.import_verification--column_arrow{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    border: 2px solid var(--light_gray);
+}
+
+.import_verification--sheet_column.skip .import_verification--column_arrow{
+    background-color: var(--red);
+    color: white;
+}
+
+.import_verification--sheet_column.skip > span:nth-of-type(2){
+    background-color: var(--light_red);
+    color: var(--light_gray);
+    font-weight: bold;
+}
+
+.import_verification--sheet_column.new .import_verification--column_arrow{
+    background-color: var(--orange);
+    color: white;
+}
+
+.import_verification--sheet_column.new > span:nth-of-type(2){
+    background-color: var(--light_orange);
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.import_verification--sheet_column.into .import_verification--column_arrow{
+    background-color: var(--blue);
+    color: white;
+}
+
+.import_verification--sheet_column.into > span:nth-of-type(2){
+    background-color: var(--light_blue);
+    color: var(--light_gray);
+    font-weight: bold;
+}
+
+.invis{
+    display: none;
+}
+
+/* Excel new menu */
+.excel_menu--container
+{
+    background-color: var(--light_gray);
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    z-index: 999999;
+}
+
+.excel_menu--categories{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}
+
+.excel_menu--category{
+    padding: calc(var(--pad) / 2) var(--pad);
+    border-radius: var(--bRadius);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.excel_menu--category:hover{
+    background-color: white;
+}
+
+.excel_menu--category.active{
+    background-color: var(--light_orange);
+}
+
+.excel_menu--actions_container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+
+    margin-top: 5px;
+}
+
+.excel_menu--actions_container.hidden{
+    display: none;
+}
+
+.excel_menu--action_group{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    border-right: 1px solid var(--blue);
+    padding: 0px calc(var(--pad) / 2);
+
+    align-items: center;
+}
+
+.excel_menu--action_group > * {
+    height: 30px;
+}
+
+.excel_action{
+    width: 30px;
+    height: 30px;
+    border-radius: var(--bRadius);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all .2s;
+}
+
+
+.excel_action.options{
+    position: relative;
+}
+.excel_action.icon.options i{
+    font-size: 16px;
+}
+.excel_action.options .fa-caret-down{
+    font-size: 14px;
+}
+
+.excel_action--options{
+    position: absolute;
+    background-color: white;
+    left: 0px;
+    top: 100%;
+    border-radius: var(--bRadius);
+    overflow: hidden;
+    display: none;
+    z-index: 999999;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.excel_action--option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 5px;
+    font-size: 16px;
+    padding: calc(var(--pad) / 2);
+    
+    transition: backround-color .3s;
+}
+
+.excel_action--option:hover{
+    background-color: var(--light_gray);
+}
+
+.excel_action.options.toggle .excel_action--options{
+    display: block;
+}
+
+.excel_action.icon{
+    font-size: 20px;
+}
+
+.excel_action.icon_text{
+    font-size: 20px;
+    position: relative;
+}
+
+.excel_action.icon_text i {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 14px;
+}
+
+.excel_action:hover{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.excel_action.active{
+    background-color: var(--light_orange);
+}
+
+.excel_menu--fake_container{
+    display: flex;
+    column-gap: 5px;
+}
+
+.excel_menu--fake_container > *{
+    height: 30px;
+}
+
+.excel_menu--fake_container.hidden{
+    display: none;
+}
+
+.cond_format--list{
+    margin: 5px 0px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.cond_format_case--list:empty::before{
+    content: "No cases yet!";
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cond_format--list:empty::before{
+    content: "No rules yet!";
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.condition--container{
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto ;
+    row-gap: 10px;
+
+    background-color: var(--light_gray);
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius);
+    column-gap: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.condition--container .custom_select {
+    height: 100%;
+}
+
+.condition--extras{
+    display: flex;
+    column-gap: 10px;
+}
+
+.cond_format_case--list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px 0px;
+}
+
+.small_text_formatting{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--gray);
+    border-radius: var(--bRadius);
+    background-color: white;
+    overflow: hidden;
+
+    grid-column: 1/-1;
+}
+
+.small_text_formatting--example{
+    padding: calc(var(--pad) / 2);
+    border-bottom: 1px solid var(--gray);
+    background-color: var(--light_orange);
+}
+
+.small_text_formatting--actions{
+    display: flex;
+    column-gap: 5px;
+    padding: calc(var(--pad) / 2);
+}
+
+.cond_format--rule{
+    text-align: start;
+    background-color: var(--light_gray);
+    border-radius: var(--bRadius);
+    padding: calc(var(--pad) / 2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    position: relative;
+
+    cursor: pointer;
+    transition: box-shadow .3s;
+}
+
+.cond_format--rule:hover{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.cond_format--rule button{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}

@@ -1,0 +1,129 @@
+.custom_select{
+    z-index: 9999;
+    position: relative;
+    min-width: 200px;
+    background-color: var(--light_gray);
+    border-radius: var(--bRadius);
+}
+
+.custom_select::before{
+    content: attr(data-label);
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    color: var(--orange);
+    font-size: 10px;
+}
+
+.custom_select.icons_select{
+    width: fit-content;
+    min-width: auto;
+}
+
+.custom_select--header{
+    border-radius: var(--bRadius);
+    padding: 0px calc(var(--pad) / 2);
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin: 10px auto;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.custom_select.noMargin .custom_select--header{
+    margin: 0px auto;
+}
+
+.custom_select.custom_select.noMargin .custom_select--options_container{
+    margin-top: 10px;
+}
+
+.custom_select--options_container{
+    position: absolute;
+    background-color: var(--light_gray);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    display: grid;
+    grid-template-rows: 0fr;
+    width: calc(100% - 10px);
+    transition: all .4s;
+}
+
+.custom_select--options_fake_container{
+    overflow: hidden;
+}
+
+.custom_select--options{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    padding: calc(var(--pad) / 2);
+}
+
+.custom_select--option{
+    padding: calc(var(--pad) / 2);
+    border-radius: var(--bRadius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    cursor: pointer;
+
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    padding-left: 25px;
+    position: relative;
+}
+
+.custom_select--option::before{
+    content: "\f00c";
+    font-family: 'Font Awesome 6 Pro';
+    color: var(--blue);
+
+    position: absolute;
+    left: 5px;
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.custom_select--option.checked::before{
+    opacity: 1;
+}
+
+.custom_select--option:hover{
+    background-color: white;
+}
+
+.custom_select.active .custom_select--options_container{
+    grid-template-rows: 1fr;
+    width: 100%;
+    min-width: 200px;
+}
+
+.custom_select.icons_select.active .custom_select--options_container{
+    min-width: 60px;
+    width: max-content;
+}
+
+
+/* White */
+.custom_select.white{
+    background-color: white;
+}
+
+.custom_select.white .custom_select--options_container{
+    background-color: white;
+}
+
+.custom_select.white .custom_select--option{
+    background-color: var(--light_gray);
+}
+
+.custom_select.white .custom_select--option:hover{
+    background-color: white
+}
